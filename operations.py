@@ -26,9 +26,12 @@ def display():
         print(prettify_county(n))
 
 def filter_state(state_abbreviation:str):
+    output_list = []
     for n in running_list.running_list:
-        if n.state != state_abbreviation:
-            running_list.running_list.remove(n)
+        if n.state == state_abbreviation:
+            output_list.append(n)
+    running_list.running_list = output_list
+    return None
 
 
 

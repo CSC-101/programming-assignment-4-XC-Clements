@@ -1,7 +1,9 @@
 import sys
+from os.path import split
+
 import operations
 import running_list
-from operations import prettify_county
+from operations import prettify_county, filter_state
 from running_list import init_running_list
 
 
@@ -30,15 +32,14 @@ def can_opener():
         except IndexError:
             pass
         args_str = ", ".join(args)
-        command = ("operations." + split_line[0] + "(" + str(args_str) + ")")
-        new_command = "operations.filter_state('CA')"
-        eval(new_command)
+        command = ("operations." + split_line[0] + "(args_str)")
+        eval(command)
+        print(running_list.running_list)
+
 
 
 def hello(abc:str):
     print(abc)
 if __name__ == '__main__':
     running_list.init_running_list()
-    arg = "CA"
-    eval("operations.filter_state(arg)")
     can_opener()
