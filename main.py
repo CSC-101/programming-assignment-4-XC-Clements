@@ -32,14 +32,16 @@ def can_opener():
         except IndexError:
             pass
         args_str = ", ".join(args)
-        command = ("operations." + split_line[0] + "(args_str)")
+        if args_str == '':
+            command = ("operations." + split_line[0] + "()")
+        else:
+            command = ("operations." + split_line[0] + "(args_str)")
         eval(command)
-        print(running_list.running_list)
+        #print(running_list.running_list)
 
 
 
-def hello(abc:str):
-    print(abc)
+
 if __name__ == '__main__':
     running_list.init_running_list()
     can_opener()
