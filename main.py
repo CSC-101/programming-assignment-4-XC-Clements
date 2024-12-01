@@ -32,10 +32,12 @@ def can_opener():
         except IndexError:
             pass
         args_str = ", ".join(args)
-        if args_str == '':
+        if args_str == "":
             command = ("operations." + split_line[0] + "()")
-        else:
+        elif len(args) == 1:
             command = ("operations." + split_line[0] + "(args_str)")
+        else:
+            command = ("operations." + split_line[0] + "(args[0], args[1])")
         eval(command)
         #print(running_list.running_list)
 

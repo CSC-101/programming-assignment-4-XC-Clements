@@ -98,7 +98,7 @@ def filter_lt(field:str, number:int):
     output_list = []
     for n in running_list.running_list:
         field_prop = fields(field, n)
-        if field_prop < number:
+        if field_prop < int(number):
             output_list.append(n)
     running_list.running_list = output_list
     return None
@@ -131,6 +131,17 @@ def population_total():
         total_population += n.population['2014 Population']
     print("2014 population: {}".format(total_population))
     return total_population
+
+
+def display_item(field:str):
+    running_total = 0
+    num_items = 0
+    for n in running_list.running_list:
+        field_prop = fields(field, n)
+        running_total += field_prop
+        num_items += 1
+    average = running_total / num_items
+    print(average)
 
 
 
